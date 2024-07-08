@@ -1,6 +1,7 @@
 package Hardeymorlah.AbbeyFullStackApp.model;
 
 import Hardeymorlah.AbbeyFullStackApp.model.Enum.RelationshipType;
+import Hardeymorlah.AbbeyFullStackApp.model.Enum.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,8 +34,13 @@ public class Relationship {
         @Column(name = "relationship_type")
         private RelationshipType relationshipType;
 
+        @Setter
+        @Enumerated(EnumType.STRING)
+        private Role role;
+
         @Override
         public String toString() {
-                return STR."Relationship{id=\{id}, follower=\{user1}, following=\{user2}, relationshipType=\{relationshipType}\{'}'}";
+                return STR."Relationship{id=\{id}, user1=\{user1}, user2=\{user2}, relationshipType=\{relationshipType}, role=\{role}\{'}'}";
         }
 }
+

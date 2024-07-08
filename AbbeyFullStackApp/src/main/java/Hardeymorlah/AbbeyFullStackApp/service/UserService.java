@@ -3,6 +3,7 @@ package Hardeymorlah.AbbeyFullStackApp.service;
 import Hardeymorlah.AbbeyFullStackApp.config.AccountConfiguration;
 import Hardeymorlah.AbbeyFullStackApp.model.DTOs.LoginRequest;
 import Hardeymorlah.AbbeyFullStackApp.model.DTOs.LoginResponse;
+import Hardeymorlah.AbbeyFullStackApp.model.Enum.Role;
 import Hardeymorlah.AbbeyFullStackApp.model.User;
 import Hardeymorlah.AbbeyFullStackApp.repository.UserRepository;
 import lombok.Data;
@@ -68,7 +69,7 @@ public class UserService {
 
     public ResponseEntity<User> createNewUser(User user) {
         passwordEncoder = accountConfiguration.passwordEncoder();
-        user.setUsername(user.getUsername());
+        user.setRole(Role.USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
     }

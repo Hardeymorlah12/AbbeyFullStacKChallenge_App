@@ -31,18 +31,18 @@ public class User implements UserDetails {
         private String username;
         @NotNull
         @NotBlank(message = "Password must contain a minimum of 8 and a maximum of 13 characters")
-        @Size(min = 8, max = 13, message = "Password must contain a minimum of 8 and a maximum of 13 characters")
-        @Pattern(regexp ="(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,13}",
-                message = "Password must contain at least one lowercase, one uppercase, one digit, one special character, and be between 8 and 13 characters long")
+//        @Size(min = 8, max = 13, message = "Password must contain a minimum of 8 and a maximum of 13 characters")
+        @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$!%+=^*?&]).{8,}$")
         @Column(name = "password")
         @Setter
         private String password;
-
+        @Setter
+        @Enumerated(EnumType.STRING)
         private Role role;
 
         @Override
         public String toString() {
-                return STR."User{id=\{id}, username='\{username}\{'\''}, password='\{password}\{'\''}\{'}'}";
+                return STR."User{id=\{id}, username='\{username}\{'\''}, password='\{password}\{'\''}, role=\{role}\{'}'}";
         }
 
         @Override

@@ -2,6 +2,7 @@ package Hardeymorlah.AbbeyFullStackApp.service;
 
 import Hardeymorlah.AbbeyFullStackApp.model.Account;
 import Hardeymorlah.AbbeyFullStackApp.model.Enum.AccountType;
+import Hardeymorlah.AbbeyFullStackApp.model.Enum.Role;
 import Hardeymorlah.AbbeyFullStackApp.model.User;
 import Hardeymorlah.AbbeyFullStackApp.repository.AccountRepository;
 import Hardeymorlah.AbbeyFullStackApp.repository.UserRepository;
@@ -37,6 +38,7 @@ public class AccountService {
     public ResponseEntity<Account> createAccount(Account account) {
         account.setUser(account.getUser());
         account.setAccountType(AccountType.BASIC);
+        account.setRole(Role.USER);
         account.setName(account.getName());
         account.setBio(account.getBio());
         account.setLocation(account.getLocation());

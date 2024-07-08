@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Abbey FullStack Challenge App</title>
+    <style>
+        td{
+            padding: 5px;
+        }
+    </style>
+    <title>Create Account</title>
+</head>
+<body>
+<div class="container">
+    <h3 style="margin-top: 45px; margin-bottom: 15px; padding-bottom: 50px; text-align: center">Abbey FullStack Challenge App</h3>
+<h1>Create Account</h1>
+<form action="#" th:action="@{/api/accounts}" method="post" enctype="multipart/form-data">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="bio">Bio:</label>
+    <input type="text" id="bio" name="bio" required><br>
+
+    <label for="interests">Interests:</label>
+    <input type="text" id="interests" name="interests" required><br>
+
+    <label for="location">Location:</label>
+    <input type="text" id="location" name="location" required><br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required><br>
+
+    <label for="userId">User ID:</label>
+    <input type="number" id="userId" name="userId" required><br>
+
+    <label for="profilePicture">Profile Picture:</label>
+    <input type="file" id="profilePicture" name="profilePicture"><br>
+
+    <button type="submit">Create Account</button>
+</form>\
+
+</body>
+
+</html>

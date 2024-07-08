@@ -1,6 +1,7 @@
 package Hardeymorlah.AbbeyFullStackApp.service;
 
 import Hardeymorlah.AbbeyFullStackApp.model.Enum.RelationshipType;
+import Hardeymorlah.AbbeyFullStackApp.model.Enum.Role;
 import Hardeymorlah.AbbeyFullStackApp.model.Relationship;
 import Hardeymorlah.AbbeyFullStackApp.model.User;
 import Hardeymorlah.AbbeyFullStackApp.repository.RelationshipRepository;
@@ -21,6 +22,7 @@ public class RelationshipService {
     public ResponseEntity<Relationship> createRelationship(Relationship relationship) {
         relationship.setUser1(relationship.getUser1());
         relationship.setUser2(relationship.getUser2());
+        relationship.setRole(Role.USER);
         relationship.setRelationshipType(RelationshipType.FOLLOWER);
        return new ResponseEntity<>(relationshipRepository.save(relationship), HttpStatus.CREATED);
     }
