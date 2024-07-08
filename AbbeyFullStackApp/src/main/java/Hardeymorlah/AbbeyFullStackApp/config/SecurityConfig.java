@@ -32,7 +32,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/user/register", "/api/v1/user/login").permitAll()
                         .requestMatchers("/users/**").hasAnyAuthority(Role.USER.name())
                         .anyRequest().authenticated())
-                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(abbeyAppFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults());
@@ -40,6 +40,5 @@ public class SecurityConfig {
         return httpSecurity.build();
 
     }
-
 
 }

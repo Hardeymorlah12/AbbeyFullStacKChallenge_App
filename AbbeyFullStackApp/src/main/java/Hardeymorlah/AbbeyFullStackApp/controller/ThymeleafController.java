@@ -35,5 +35,10 @@ public class ThymeleafController {
 
         return new ModelAndView("redirect:/login");
     }
+        @GetMapping("/login")
+        public ModelAndView showLoginForm() {
+            return new ModelAndView("login");
+        }
+    }
 
 }
