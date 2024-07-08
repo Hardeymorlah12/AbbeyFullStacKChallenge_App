@@ -21,12 +21,12 @@ public class Relationship {
         @Setter
         @ManyToOne
         @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-        private User user;
+        private User user1;
 
         @Setter
         @ManyToOne
         @JoinColumn(name = "related_user_id", referencedColumnName = "user_id")
-        private User relatedUser;
+        private User user2;
 
         @Setter
         @Enumerated(EnumType.STRING)
@@ -35,6 +35,6 @@ public class Relationship {
 
         @Override
         public String toString() {
-                return STR."Relationship{id=\{id}, user=\{user}, relatedUser=\{relatedUser}, relationshipType=\{relationshipType}\{'}'}";
+                return STR."Relationship{id=\{id}, follower=\{user1}, following=\{user2}, relationshipType=\{relationshipType}\{'}'}";
         }
 }

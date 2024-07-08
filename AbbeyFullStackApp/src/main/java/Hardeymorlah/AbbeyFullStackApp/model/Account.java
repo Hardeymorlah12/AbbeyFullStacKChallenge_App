@@ -1,11 +1,18 @@
 package Hardeymorlah.AbbeyFullStackApp.model;
 
+import Hardeymorlah.AbbeyFullStackApp.model.Enum.AccountType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Null;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Arrays;
 
 @Entity
 @Table(name = "account_table")
@@ -20,19 +27,24 @@ public class Account {
         @Column(name = "account_id")
         private Long id;
         @Setter
-        @NotNull
-        @Column(name = "profile_picture")
-        private String profilePicture;
-
+//        @NotNull
+        @Lob
+        private byte[] profilePicture;
         @Setter
         @NotNull
         @Column(name = "bio")
         private String bio;
-
         @Setter
         @NotNull
         @Column(name = "location")
         private String location;
+
+        @Setter
+        @NotBlank(message = "Name is mandatory")
+        @NotNull
+        @Size(min = 2, max = 100, message = "Name must be more than 2, and less than 100 characters")
+        @Column(name = "name")
+        private String name;
 
         @Setter
         @NotNull
@@ -40,20 +52,20 @@ public class Account {
         private String interests;
 
         @Setter
-        @Column(name = "account_type")
-        private String accountType;
+        @Enumerated(EnumType.STRING)
+        private AccountType accountType;
 
+        @OneToOne
         @Setter
-        @Column(name = "account_balance")
-        private Double accountBalance;
-
-        @Setter
-        @OneToOne(mappedBy = "account")
+        @JoinColumn(name = "user_id")
         private User user;
+        @Setter
+        @NotNull
+        @Column(name = "date_of_birth")
+        private  String dob;
 
-
-    @Override
-    public String toString() {
-        return STR."Account{id=\{id}, profilePicture='\{profilePicture}\{'\''}, bio='\{bio}\{'\''}, location='\{location}\{'\''}, interests='\{interests}\{'\''}, accountType='\{accountType}\{'\''}, accountBalance=\{accountBalance}, user=\{user}\{'}'}";
-    }
+        @Override
+        public String toString() {
+                return STR."Account{id=\{id}, profilePicture=\{Arrays.toString(profilePicture)}, bio='\{bio}\{'\''}, location='\{location}\{'\''}, name='\{name}\{'\''}, interests='\{interests}\{'\''}, accountType=\{accountType}, user=\{user}, dob='\{dob}\{'\''}\{'}'}";
+        }
 }

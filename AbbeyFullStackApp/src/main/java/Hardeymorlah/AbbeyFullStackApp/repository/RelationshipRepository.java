@@ -8,9 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface RelationshipRepository extends JpaRepository<Relationship, Long> {
-    List<Relationship> findByUser(User user);
-    List<Relationship> findByRelatedUser(User relatedUser);
-    List<Relationship> findByRelationshipType(RelationshipType relationshipType);
-    List<Relationship> findByUserAndRelationshipType(User user, RelationshipType relationshipType);
+    List<Relationship> findByUser1AndRelationshipType(User user1, RelationshipType relationshipType);
+    List<Relationship> findByUser2AndRelationshipType(User user2, RelationshipType relationshipType);
+    List<Relationship> findByUser1AndUser2AndRelationshipType(User user1, User user2,RelationshipType relationshipType);
 
 }

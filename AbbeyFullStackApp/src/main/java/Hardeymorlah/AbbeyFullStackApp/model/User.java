@@ -1,26 +1,27 @@
 package Hardeymorlah.AbbeyFullStackApp.model;
 
+import Hardeymorlah.AbbeyFullStackApp.model.Enum.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.Collection;
+import java.util.List;
+
 @Entity
 @Table(name = "user_table")
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class User {
+public class User implements UserDetails {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "user_id")
         private Long id;
-        @Setter
-        @NotBlank(message = "Name is mandatory")
-        @Null
-        @Size(min = 2, max = 100, message = "Name must be more than 2, and less than 100 characters")
-        @Column(name = "name")
-
-        private String name;
         @NotNull
         @NotBlank(message = "Email or Username is mandatory")
         @Pattern(regexp = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
@@ -37,13 +38,36 @@ public class User {
         @Setter
         private String password;
 
-        @OneToOne(mappedBy = "user")
-        private Account account;
-
+        private Role role;
 
         @Override
         public String toString() {
-                return STR."User{id=\{id}, name='\{name}\{'\''}, username='\{username}\{'\''}, password='\{password}\{'\''}, account=\{account}\{'}'}";
+                return STR."User{id=\{id}, username='\{username}\{'\''}, password='\{password}\{'\''}\{'}'}";
+        }
+
+        @Override
+        public Collection<? extends GrantedAuthority> getAuthorities() {
+                return List.of(new SimpleGrantedAuthority(this.role.name()));
+        }
+
+        @Override
+        public boolean isAccountNonExpired() {
+                return UserDetails.super.isAccountNonExpired();
+        }
+
+        @Override
+        public boolean isAccountNonLocked() {
+                return UserDetails.super.isAccountNonLocked();
+        }
+
+        @Override
+        public boolean isCredentialsNonExpired() {
+                return UserDetails.super.isCredentialsNonExpired();
+        }
+
+        @Override
+        public boolean isEnabled() {
+                return UserDetails.super.isEnabled();
         }
 }
 
