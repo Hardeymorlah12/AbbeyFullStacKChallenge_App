@@ -28,7 +28,7 @@ public class AccountController {
         return accountService.getAccountById(id);
     }
     @GetMapping("/user_by_name/{name}")
-    public ResponseEntity<Account> getUserByName(@PathVariable String name) {
+    public ResponseEntity<Account> getAccountByName(@PathVariable String name) {
         return accountService.findAccountByName(name);
     }
     @GetMapping("/account_type")
