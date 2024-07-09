@@ -32,7 +32,7 @@ public class AccountService {
     public ResponseEntity<Account> getAccountByAccountType(String accountType) {
         return new ResponseEntity<>(accountRepository.findByAccountType(accountType), HttpStatus.OK);
     }
-    public ResponseEntity<Account> findUserByName(String name) {
+    public ResponseEntity<Account> findAccountByName(String name) {
         return new ResponseEntity<>(accountRepository.findByName(name), HttpStatus.OK);
     }
     public ResponseEntity<Account> createAccount(Account account) {
