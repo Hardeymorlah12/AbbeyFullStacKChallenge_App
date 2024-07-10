@@ -2,23 +2,17 @@ package Hardeymorlah.AbbeyFullStackApp.service;
 
 import Hardeymorlah.AbbeyFullStackApp.model.Account;
 import Hardeymorlah.AbbeyFullStackApp.model.Enum.AccountType;
-import Hardeymorlah.AbbeyFullStackApp.model.Enum.Role;
-import Hardeymorlah.AbbeyFullStackApp.model.Enum.Role;
-import Hardeymorlah.AbbeyFullStackApp.model.Enum.Role;
-import Hardeymorlah.AbbeyFullStackApp.model.User;
 import Hardeymorlah.AbbeyFullStackApp.repository.AccountRepository;
 import Hardeymorlah.AbbeyFullStackApp.repository.UserRepository;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @Data
-@Transactional
 public class AccountService {
     private final AccountRepository accountRepository;
     private final UserRepository userRepository;

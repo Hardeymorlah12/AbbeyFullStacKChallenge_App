@@ -1,19 +1,18 @@
 package Hardeymorlah.AbbeyFullStackApp.service;
 
 import Hardeymorlah.AbbeyFullStackApp.model.Enum.RelationshipType;
-import Hardeymorlah.AbbeyFullStackApp.model.Enum.Role;
 import Hardeymorlah.AbbeyFullStackApp.model.Relationship;
 import Hardeymorlah.AbbeyFullStackApp.model.User;
 import Hardeymorlah.AbbeyFullStackApp.repository.RelationshipRepository;
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@Transactional
+@Data
 public class RelationshipService {
     private final RelationshipRepository relationshipRepository;
 

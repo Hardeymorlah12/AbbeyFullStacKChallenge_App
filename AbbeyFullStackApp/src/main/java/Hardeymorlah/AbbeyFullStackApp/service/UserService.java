@@ -15,13 +15,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @Data
-@Transactional
 public class UserService {
     private final UserRepository userRepository;
     private final JWTService jwtService;
@@ -71,10 +69,14 @@ public class UserService {
 
     public ResponseEntity<User> createNewUser(User user) {
         passwordEncoder = accountConfiguration.passwordEncoder();
-        user.setRole(Role.USER);
+        if (user.getRole() == null) {
+            user.setRole(Role.USER);
+        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return new ResponseEntity<>(userRepository.save(user), HttpStatus.CREATED);
     }
+
+
 
     public ResponseEntity<User> updateUser(long id, User updatedUser) {
         User existingUser = userRepository.findById(id).orElseThrow();
