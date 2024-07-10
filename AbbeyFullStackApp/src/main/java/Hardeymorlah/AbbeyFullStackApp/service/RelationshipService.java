@@ -8,10 +8,12 @@ import Hardeymorlah.AbbeyFullStackApp.repository.RelationshipRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class RelationshipService {
     private final RelationshipRepository relationshipRepository;
 
@@ -22,7 +24,6 @@ public class RelationshipService {
     public ResponseEntity<Relationship> createRelationship(Relationship relationship) {
         relationship.setUser1(relationship.getUser1());
         relationship.setUser2(relationship.getUser2());
-        relationship.setRole(Role.USER);
         relationship.setRelationshipType(RelationshipType.FOLLOWER);
        return new ResponseEntity<>(relationshipRepository.save(relationship), HttpStatus.CREATED);
     }

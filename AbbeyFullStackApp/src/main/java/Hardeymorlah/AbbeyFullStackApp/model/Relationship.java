@@ -34,13 +34,9 @@ public class Relationship {
         @Column(name = "relationship_type")
         private RelationshipType relationshipType;
 
-        @Setter
-        @Enumerated(EnumType.STRING)
-        private Role role;
-
         @Override
         public String toString() {
-                return STR."Relationship{id=\{id}, user1=\{user1}, user2=\{user2}, relationshipType=\{relationshipType}, role=\{role}\{'}'}";
+                return STR."Relationship{id=\{id}, user1=\{user1}, user2=\{user2}, relationshipType=\{relationshipType}\{'}'}";
         }
 }
 

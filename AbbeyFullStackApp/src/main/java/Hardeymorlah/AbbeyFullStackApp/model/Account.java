@@ -65,13 +65,9 @@ public class Account {
         @Column(name = "date_of_birth")
         private  String dob;
 
-        @Setter
-        @Enumerated(EnumType.STRING)
-        private Role role;
-
         @Override
         public String toString() {
-                return STR."Account{id=\{id}, profilePicture=\{Arrays.toString(profilePicture)}, bio='\{bio}\{'\''}, location='\{location}\{'\''}, name='\{name}\{'\''}, interests='\{interests}\{'\''}, accountType=\{accountType}, user=\{user}, dob='\{dob}\{'\''}, role=\{role}\{'}'}";
+                return STR."Account{id=\{id}, profilePicture=\{Arrays.toString(profilePicture)}, bio='\{bio}\{'\''}, location='\{location}\{'\''}, name='\{name}\{'\''}, interests='\{interests}\{'\''}, accountType=\{accountType}, user=\{user}, dob='\{dob}\{'\''}\{'}'}";
         }
 }
 
