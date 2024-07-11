@@ -34,7 +34,7 @@ public class Relationship {
 
         @Setter
         @Enumerated(EnumType.STRING)
-        @Column(name = "relationship_type", unique = true)
+        @Column(name = "relationship_type")
         private RelationshipType relationshipType;
 
         @Override
