@@ -33,7 +33,7 @@ public class AccountController {
         return accountService.findAccountByName(name);
     }
     @GetMapping("/account_type")
-    public ResponseEntity<Account> getAccountByType(@RequestParam AccountType accountType) {
+    public ResponseEntity<List<Account>> getAccountByType(@RequestParam AccountType accountType) {
         return accountService.getAccountByAccountType(accountType);
     }
     @PostMapping("/post_new_account")
