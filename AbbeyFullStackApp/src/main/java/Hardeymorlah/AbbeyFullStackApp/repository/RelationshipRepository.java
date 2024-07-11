@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface RelationshipRepository extends JpaRepository<Relationship, Long> {
     Relationship findRelationById(long id);
-    List<Relationship> findByUserAndRelationshipType(User user, RelationshipType relationshipType);
+    List<Relationship> findByRelationshipType(RelationshipType relationshipType);
 }

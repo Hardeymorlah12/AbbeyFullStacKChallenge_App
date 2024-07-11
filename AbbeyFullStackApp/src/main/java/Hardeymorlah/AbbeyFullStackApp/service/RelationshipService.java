@@ -35,8 +35,8 @@ public class RelationshipService {
         return new ResponseEntity<>(relationshipRepository.save(existingRelationship), HttpStatus.ACCEPTED);
     }
 
-    public ResponseEntity<List<Relationship>> getRelationshipByUserAndRelationshipType(User user, RelationshipType relationshipType) {
-        return new ResponseEntity<>(relationshipRepository.findByUserAndRelationshipType(user, relationshipType), HttpStatus.OK);
+    public ResponseEntity<List<Relationship>> getRelationshipByRelationshipType(RelationshipType relationshipType) {
+        return new ResponseEntity<>(relationshipRepository.findByRelationshipType(relationshipType), HttpStatus.OK);
     }
     public ResponseEntity<Relationship> getRelationshipById(long id) {
         return new ResponseEntity<>(relationshipRepository.findRelationById(id), HttpStatus.OK);

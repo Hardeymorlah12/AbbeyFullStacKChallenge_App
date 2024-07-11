@@ -31,9 +31,9 @@ public class RelationshipController {
         return relationshipService.updateRelationship(id, updatedRelationship);
     }
 
-    @GetMapping("/get_relationships/{user}/{relationshipType}")
-    public ResponseEntity<List<Relationship>> getRelationships(@PathVariable User user, @PathVariable RelationshipType relationshipType) {
-        return relationshipService.getRelationshipByUserAndRelationshipType(user, relationshipType);
+    @GetMapping("/get_relationship/{relationshipType}")
+    public ResponseEntity<List<Relationship>> getRelationships(@PathVariable RelationshipType relationshipType) {
+        return relationshipService.getRelationshipByRelationshipType(relationshipType);
     }
     @GetMapping("/get_relationship_by_id/{id}")
     public ResponseEntity<Relationship> getRelationshipById(@PathVariable long id) {
