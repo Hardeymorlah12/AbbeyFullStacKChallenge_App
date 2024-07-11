@@ -27,7 +27,7 @@ public class AccountService {
     public ResponseEntity<Account> getAccountById(long id) {
         return new ResponseEntity<>(accountRepository.findById(id).orElseThrow(), HttpStatus.OK);
     }
-    public ResponseEntity<Account> getAccountByAccountType(String accountType) {
+    public ResponseEntity<Account> getAccountByAccountType(AccountType accountType) {
         return new ResponseEntity<>(accountRepository.findByAccountType(accountType), HttpStatus.OK);
     }
     public ResponseEntity<Account> findAccountByName(String name) {

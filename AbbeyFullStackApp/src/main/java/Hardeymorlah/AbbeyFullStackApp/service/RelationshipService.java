@@ -24,18 +24,27 @@ public class RelationshipService {
         relationship.setUser1(relationship.getUser1());
         relationship.setUser2(relationship.getUser2());
         relationship.setRelationshipType(RelationshipType.FOLLOWER);
-       return new ResponseEntity<>(relationshipRepository.save(relationship), HttpStatus.CREATED);
-    }
-    public ResponseEntity<List<Relationship>> getRelationships(User user, RelationshipType relationshipType) {
-        return new ResponseEntity<>(relationshipRepository.findByUser1AndRelationshipType(user, relationshipType), HttpStatus.OK);
+        return new ResponseEntity<>(relationshipRepository.save(relationship), HttpStatus.CREATED);
     }
 
-    public ResponseEntity<List<Relationship>> getRelatedTo(User user, RelationshipType relationshipType) {
-        return new ResponseEntity<>(relationshipRepository.findByUser2AndRelationshipType(user, relationshipType), HttpStatus.OK);
+    public ResponseEntity<Relationship> updateRelationship(long id, Relationship updatedRelationship) {
+        Relationship existingRelationship = relationshipRepository.findRelationById(id);
+        existingRelationship.setUser1(updatedRelationship.getUser1());
+        existingRelationship.setUser2(updatedRelationship.getUser2());
+        existingRelationship.setRelationshipType(updatedRelationship.getRelationshipType());
+        return new ResponseEntity<>(relationshipRepository.save(existingRelationship), HttpStatus.ACCEPTED);
     }
-    public ResponseEntity<Relationship> deleteRelationship(User user1, User user2, RelationshipType relationshipType) {
-        Relationship relationship = (Relationship) relationshipRepository.findByUser1AndUser2AndRelationshipType(user1, user2 ,relationshipType);
-      relationshipRepository.delete(relationship);
-      return new ResponseEntity<>(relationship, HttpStatus.ACCEPTED);
+
+    public ResponseEntity<List<Relationship>> getRelationshipByUserAndRelationshipType(User user, RelationshipType relationshipType) {
+        return new ResponseEntity<>(relationshipRepository.findByUserAndRelationshipType(user, relationshipType), HttpStatus.OK);
     }
+    public ResponseEntity<Relationship> getRelationshipById(long id) {
+        return new ResponseEntity<>(relationshipRepository.findRelationById(id), HttpStatus.OK);
+    }
+    public ResponseEntity<Relationship> deleteRelationship(long id) {
+        Relationship deletedRelationship = relationshipRepository.findRelationById(id);
+        relationshipRepository.deleteById(id);
+        return new ResponseEntity<>(deletedRelationship, HttpStatus.OK);
+    }
+
 }

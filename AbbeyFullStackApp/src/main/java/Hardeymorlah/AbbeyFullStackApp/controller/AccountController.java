@@ -1,6 +1,7 @@
 package Hardeymorlah.AbbeyFullStackApp.controller;
 
 import Hardeymorlah.AbbeyFullStackApp.model.Account;
+import Hardeymorlah.AbbeyFullStackApp.model.Enum.AccountType;
 import Hardeymorlah.AbbeyFullStackApp.service.AccountService;
 import jakarta.validation.Valid;
 import lombok.Data;
@@ -32,7 +33,7 @@ public class AccountController {
         return accountService.findAccountByName(name);
     }
     @GetMapping("/account_type")
-    public ResponseEntity<Account> getAccountByType(@RequestParam String accountType) {
+    public ResponseEntity<Account> getAccountByType(@RequestParam AccountType accountType) {
         return accountService.getAccountByAccountType(accountType);
     }
     @PostMapping("/post_new_account")
